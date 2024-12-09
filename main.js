@@ -1,30 +1,38 @@
 function start(){
-    var prompts = [
-        'a',
-        'c',
-        'd',
-        'b',
-        'e',
-        'f',
-        'g',
-        'h',
-        'i',
-        'j',
-        'k',
-        'l',
-        'p',
-        'm',
-        'n',
-        'o',
-    ]
-    localStorage.setItem("prompts", JSON.stringify(prompts));
     document.getElementById('game').innerHTML = `
     <h1>Please enter number of players</h1>
     <input class="boxthing" id="noplay" type="text">
+    <h1>Please enter prompt ID (if applicable)</h1>
+    <input class="boxthing" id="pidbox" type="text">
     <input type="button" value="click to begin" class="btn1" onclick="start2()">`
 }
 
+function prompts(){
+    var pid = document.getElementById('pidbox').value
+    if(pid == 1){ //Holiday Theme
+        var prompts = [
+            'Santa Claus is coming to',
+            'Oh the weather outside is',
+            'I almost had heart attack because I saw',
+            'Oink oink oink',
+            'I have the perfect gift idea for Jake, a',
+            'All I want for Christmas is',
+        ]
+        localStorage.setItem("prompts", JSON.stringify(prompts));
+    }
+    else{ //Generic
+        var prompts = [
+            'The worst thing to happen to you is',
+            'Did you see the solution to world hungar? it is',
+            'I can\'t believe that dad ate my',
+            'It\'s not delivery, it\'s',
+        ]
+        localStorage.setItem("prompts", JSON.stringify(prompts));
+    }
+}
+
 function start2(){
+    prompts()
     var players = document.getElementById('noplay').value
     localStorage.setItem('playernum', players)
     document.getElementById('game').innerHTML = `
